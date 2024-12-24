@@ -1,22 +1,27 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import Users from './Users'; // Adjust the path as per your folder structure
+import CreateUser from './CreateUser';
+import UpdateUser from './UpdateUser';
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Users/>}></Route>
-          <Route path="/create" element={<CreateUser/>}></Route>
-          <Route path="/update" element={<UpdateUser/>}></Route>
+          <Route path="/" element={<Users />}/>
+          <Route path="/create" element={<CreateUser />}/>
+          <Route path="/update" element={<UpdateUser />}/>
         </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
 export default App
