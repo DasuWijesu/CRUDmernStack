@@ -27,8 +27,8 @@ function Users (){
                                     <td>{user.Age}</td>
                                     <td>
                                         <Link to="/update" className='btn btn-success'>Update</Link>
-                                        <button>Delete</button
-                                    ></td>
+                                        <button>Delete</button>
+                                    </td>
                                 </tr>
                             ))}
                     </tbody>
