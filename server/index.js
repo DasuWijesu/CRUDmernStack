@@ -2,16 +2,19 @@
   const mongoose = require('mongoose')
   const cors = require('cors') 
   const UserModel = require('./models/Users')
-
   const dotenv = require("dotenv");
+
   const { connectDB } = require('./config/db');
 
+  //load environment variable
   dotenv.config();
 
   const PORT = process.env.pORT || 5000;
 
 
   const app = express()
+
+  //middleware
   app.use(cors())
   app.use(express.json())
 
@@ -34,11 +37,14 @@
     //   console.error('Failed to connect to MongoDB:', err);
 //     }
 //   })();
+
+//routes
 app.get('/', (req,res)=>{
   UserModel.find({})
   .then(users=>res.json(users))
-  .catch(err=> console.json(err))
+  .catch(err=> res.status(500).json(err))
 })
+
 app.post('/createUser', (req, res) => {
     const { name, email, age } = req.body;
     UserModel.create({ name, email, age })
