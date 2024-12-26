@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import axios from 'axios'
+import { useNavigate } from "react-router-dom"
 
 function CreateUser (){
     const [name, setName] = useState()
@@ -13,10 +14,15 @@ function CreateUser (){
     //     .catch(err => console.log(err))
     // }
 
+    const navigate = useNavigate()
     const Submit = (e) => {
         e.preventDefault();
         axios.post("http://localhost:5000/createUser", { name, email, age })
-            .then(result => alert('User created successfully!'))
+            .then(result => {
+                alert('User created successfully!')
+                navigate("/");  //use this to navigate to homePage
+            })
+
             .catch(err => alert('Error creating user'));
     };
     
