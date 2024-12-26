@@ -34,7 +34,11 @@
     //   console.error('Failed to connect to MongoDB:', err);
 //     }
 //   })();
-
+app.get('/', (req,res)=>{
+  UserModel.find({})
+  .then(users=>res.json(users))
+  .catch(err=> console.json(err))
+})
 app.post('/createUser', (req, res) => {
     const { name, email, age } = req.body;
     UserModel.create({ name, email, age })
